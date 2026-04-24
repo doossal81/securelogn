@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIAP - Sistem Informasi Administrasi Peradilan | Mahkamah Agung RI</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0a1f3d;
+      color: #e0f0ff;
+    }
+    .header {
+      background: #002b5c;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #00aaff;
+    }
+    h1 { margin: 0; font-size: 22px; }
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #001a3d;
+      border: 1px solid #00aaff;
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid #334466;
+    }
+    th {
+      background: #002b5c;
+      color: #00ccff;
+    }
+    .blur {
+      filter: blur(4px);
+      user-select: none;
+    }
+    .error-box {
+      background: #330000;
+      border: 2px solid #ff4444;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 6px;
+      color: #ffaaaa;
+    }
+    button {
+      padding: 12px 25px;
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover { background: #0088ff; }
+    .status { color: #ffcc00; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>SIAP Terintegrasi - Mahkamah Agung Republik Indonesia</h1>
+    <div>Internal Staff Portal • Restricted Access</div>
+  </div>
+
+  <div class="container">
+    <h2>Staff Database Access Module</h2>
+    <p class="status">Target: Internal User Credentials • Connection Established</p>
+
+    <table>
+      <tr>
+        <th>Staff Name</th>
+        <th>Username</th>
+        <th>Position</th>
+        <th>Password</th>
+        <th>Last Login</th>
+      </tr>
+      <tr>
+        <td>Dr. Ahmad Santoso, S.H., M.H.</td>
+        <td>ahmad.santoso</td>
+        <td>Hakim Agung</td>
+        <td class="blur">P@ssw0rd2025#MA</td>
+        <td>13 Apr 2026</td>
+      </tr>
+      <tr>
+        <td>Rina Dewi Putri, S.H.</td>
+        <td>rina.dewi</td>
+        <td>Panitera Pengganti</td>
+        <td class="blur">Mahkamah2026!@</td>
+        <td>14 Apr 2026</td>
+      </tr>
+      <tr>
+        <td>Ir. Budi Hartono</td>
+        <td>budi.hartono.it</td>
+        <td>IT Administrator</td>
+        <td class="blur">AdminSIAP2026Secure</td>
+        <td>14 Apr 2026</td>
+      </tr>
+      <tr>
+        <td>Siti Nurhaliza, S.H.</td>
+        <td>siti.nurhaliza</td>
+        <td>Staff Kepaniteraan</td>
+        <td class="blur">Kepaniteraan_MA25</td>
+        <td>12 Apr 2026</td>
+      </tr>
+    </table>
+
+    <div class="error-box">
+      <strong>⚠️ Synchronization Error Detected</strong><br><br>
+      Unable to decrypt and display full password hashes.<br>
+      Error Code: <strong>DB-SYNC-0x9F3K2L</strong><br>
+      Reason: New security layer on the central authentication server is blocking deep credential extraction.<br><br>
+      <strong>Status:</strong> Partial access only (usernames visible • passwords encrypted)
+    </div>
+
+    <button onclick="attemptFix()">Attempt Advanced Bypass</button>
+    <p id="fixStatus" style="margin-top:15px; color:#ffaa00;"></p>
+  </div>
+
+  <script>
+    function attemptFix() {
+      const status = document.getElementById('fixStatus');
+      status.textContent = "Initiating deep web bypass module...";
+
+      setTimeout(() => {
+        status.innerHTML = `
+          Bypass failed.<br>
+          The latest security patch on the SIAP authentication server is preventing full password decryption.<br><br>
+          <strong>Recommendation:</strong> A specialized decryption module is required to bypass this layer.
+        `;
+        status.style.color = "#ff6666";
+      }, 1800);
+    }
+
+    // Disable right click
+    document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
+
+</body>
+</html>
